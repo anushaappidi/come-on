@@ -24,6 +24,7 @@ def feedback_form(request):
             dummy = {'Marks': marks_awarded}
             feedback.answers = dummy
             feedback.save()
+            return render(request,'feedback/base.html')
 
         # print(request.user.id)
         # print(request.POST["MATHS_clears all doubts"])
@@ -103,5 +104,6 @@ def feedback(request):
 
     return render(request, 'feedback/feedback.html', context)
 
-
+def base(request):
+    return render(request, 'feedback/base.html')
 
