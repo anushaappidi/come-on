@@ -1,0 +1,27 @@
+<head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <meta charset=utf-8 />
+    <title>Morris.js Area Chart</title>
+    </head>
+    <body>
+        {{ chart_data|json_script:"chart" }}
+          <div id="bar-chart" ></div>
+        
+      </div>
+    </body>
+    <script id="chart" type="application/json">JSON HERE</script>
+
+    <script>
+
+        const value = JSON.parse(document.getElementById('chart').textContent);
+
+
+        {% comment %} console.log({{chart_data}}) {% endcomment %}
+        {% comment %} var chart_data = JSON.parse({{chart_data}}) {% endcomment %}
+        {% comment %} var chart = JSON.parse("{{chart_data|safe}}") {% endcomment %}
+        new Morris.Bar(value);
+    </script>

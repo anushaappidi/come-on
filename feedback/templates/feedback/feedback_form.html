@@ -1,0 +1,36 @@
+{% comment %} {% load feedback_extras %} {% endcomment %}
+<head>
+    <style>
+    .center {
+      text-align: center;
+    }
+    </style>
+    </head>
+
+<body>
+    <h1 class="center" >FEEDBACK FORM</h1>
+    <form method='POST'>
+        {% csrf_token %}
+    {% for subject in subjects %}
+    <h2>{{subject}}</h2>
+    {% for question in questions %}
+    <fieldset id="{{subject}}_{{question.Quality}}">
+    <h3> The teacher {{question.Quality}}.</h3>
+    <input type="radio" id="StronglyAgree" name="{{subject}}_{{question.Quality}}" value="100" required>
+    <label for="StronglyAgree">Strongly Agree</label><br>
+    <input type="radio" id="Agree" name="{{subject}}_{{question.Quality}}" value="80"  required>
+    <label for="Agree">Agree</label><br>
+    <input type="radio" id="Unsure" name="{{subject}}_{{question.Quality}}" value="60"  required>
+    <label for="Unsure">Unsure</label><br>
+    <input type="radio" id="Disagree" name="{{subject}}_{{question.Quality}}" value="40"  required>
+    <label for="Disagree">Disagree</label><br>
+    <input type="radio" id="StronglyDisagree" name="{{subject}}_{{question.Quality}}" value="20"  required>
+    <label for="StronglyDisagree">Strongly Disagree</label><br>
+    </fieldset>
+    {% endfor %}
+    {% endfor %}
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Submit</button>
+    </div>
+    </form>
+</body>
