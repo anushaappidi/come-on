@@ -5,7 +5,7 @@ class Student(models.Model):
     roll_no= models.CharField(max_length=100)
     student_name= models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
-        return self.roll_no
+        return self.student_name.username
 
 
 class Teacher(models.Model):

@@ -3,31 +3,61 @@
     <style>
     .center {
       text-align: center;
+      
     }
+    .card{
+        margin-bottom: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 100%%;
+      padding: 2px 16px;
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+      
     </style>
-    </head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOME</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg bg-primary text-white ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">GNITS</a>
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{%url 'logout'%}">LOGOUT</a>
+            </li>
+        </ul>
+          </div>
+        </div>
+      </nav>
     <h1 class="center" >FEEDBACK FORM</h1>
     <form method='POST'>
         {% csrf_token %}
     {% for subject in subjects %}
-    <h2>{{subject}}</h2>
+    <div class="card">
+    <h2 class="center">{{subject}}</h2>
     {% for question in questions %}
     <fieldset id="{{subject}}_{{question.Quality}}">
-    <h3> The teacher {{question.Quality}}.</h3>
+    <h5><b>Q.</b> The teacher {{question.Quality}}.</h5>
     <input type="radio" id="StronglyAgree" name="{{subject}}_{{question.Quality}}" value="100" required>
-    <label for="StronglyAgree">Strongly Agree</label><br>
+    <label for="StronglyAgree">Strongly Agree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </label>
     <input type="radio" id="Agree" name="{{subject}}_{{question.Quality}}" value="80"  required>
-    <label for="Agree">Agree</label><br>
+    <label for="Agree">Agree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </label>
     <input type="radio" id="Unsure" name="{{subject}}_{{question.Quality}}" value="60"  required>
-    <label for="Unsure">Unsure</label><br>
+    <label for="Unsure">Unsure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </label>
     <input type="radio" id="Disagree" name="{{subject}}_{{question.Quality}}" value="40"  required>
-    <label for="Disagree">Disagree</label><br>
+    <label for="Disagree">Disagree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </label>
     <input type="radio" id="StronglyDisagree" name="{{subject}}_{{question.Quality}}" value="20"  required>
-    <label for="StronglyDisagree">Strongly Disagree</label><br>
+    <label for="StronglyDisagree">Strongly Disagree</label>
     </fieldset>
     {% endfor %}
+    </div>
     {% endfor %}
     <div class="form-group">
         <button class="btn btn-outline-info" type="submit">Submit</button>

@@ -10,16 +10,14 @@ from feedback.models import Feedback
 def home(request):
     return render(request, 'user/home.html')
 
-def home1(request):
-    return render(request, 'user/home1.html')
+def home_teacher(request):
+    return render(request, 'user/home_teacher.html')
 
 # Create your views here.
 
 
 def login(request):
-    print("helloooooooooooooooo")
     if request.method == 'POST':
-        print(request.body)
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
@@ -27,14 +25,14 @@ def login(request):
             auth_login(request, user)
             try:
                  student = Student.objects.get(student_name__pk=user.id)
-                 form_filled=Feedback.objects.filter(entry_by__pk=student.id)
-                 if form_filled is not  None:
+                 form_filled=Feedback.objects.filter(entry_by__pk=student.id).first()
+                 if form_filled is None:
                      return redirect('home')
                  else:
                     return render(request,"user/home.html",context={'filled':True})
             except Student.DoesNotExist :
                     user = None
-                    return redirect('home1')
+                    return redirect('home_teacher')
         else:
              return render(request, "user/login.html", context={
         'sent': True

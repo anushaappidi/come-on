@@ -14,8 +14,7 @@ class Feedback(models.Model):
     subject=models.CharField(max_length=100)
     answers = models.JSONField(null=True)
     def __str__(self):
-        return self.entry_by.roll_no
-
+        return self.entry_by.student_name
        
 
    

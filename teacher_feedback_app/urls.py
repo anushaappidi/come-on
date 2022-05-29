@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', user_views.login, name='login'),
     path('home/',user_views.home ,name='home'),
-    path('home1/',user_views.home1 ,name='home1'),
+    path('home_teacher/',user_views.home_teacher ,name='home_teacher'),
     path('feedback_form/',feedback_views.feedback_form ,name='feedback_form'),
     path('feedback/',feedback_views.feedback,name='feedback'),
     path('logout/',user_views.logout_view ,name='logout'),

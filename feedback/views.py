@@ -38,16 +38,12 @@ def feedback_form(request):
 
 
 def feedback(request):
-    print(request.user.id)
     current_teacher = Teacher.objects.get(teacher_name__pk=request.user.id)
-    print(current_teacher)
     subject_of_teacher = current_teacher.subject
-    print(subject_of_teacher)
     subject_data = Feedback.objects.filter(subject=subject_of_teacher).values()
     no_of_qualities = questions.count()
     final_answers = [0] * no_of_qualities
     for tuple in subject_data:
-        print(tuple)
         marks_for_subject = tuple['answers']['Marks']
         for i in range(no_of_qualities):
             final_answers[i] += marks_for_subject[i]
