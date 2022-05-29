@@ -1,0 +1,1 @@
+web: gunicorn teacher_feedback_app.wsgi --log-file -
