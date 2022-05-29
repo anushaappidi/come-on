@@ -2,11 +2,12 @@ from django.shortcuts import render
 from .models import Question
 from .models import Feedback
 from user.models import Student, Teacher
+from django.contrib.auth.decorators import login_required
 
 subjects = ['MATHS', 'PHYSICS', 'CHEMISTRY']
 questions = Question.objects.all()
 
-
+@login_required 
 def feedback_form(request):
     context = {}
 
@@ -36,7 +37,7 @@ def feedback_form(request):
 
 # Create your views here.
 
-
+@login_required 
 def feedback(request):
     current_teacher = Teacher.objects.get(teacher_name__pk=request.user.id)
     subject_of_teacher = current_teacher.subject
