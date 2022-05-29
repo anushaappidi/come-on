@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-d)*l3fxj277dszs6=&!$z$6vwetp60psd*0&5$f4bw6bosuby^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['teacher-feedback-app.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
