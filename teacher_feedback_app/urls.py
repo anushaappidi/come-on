@@ -23,7 +23,7 @@ from feedback import views as feedback_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', user_views.login, name='login'),
+    path('', user_views.login, name='login'),
     path('home/',user_views.home ,name='home'),
     path('home_teacher/',user_views.home_teacher ,name='home_teacher'),
     path('feedback_form/',feedback_views.feedback_form ,name='feedback_form'),

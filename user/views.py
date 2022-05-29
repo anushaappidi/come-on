@@ -17,6 +17,10 @@ def home_teacher(request):
 
 
 def login(request):
+    if request.user.id is not None:
+        return redirect('home')
+
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -40,7 +44,8 @@ def login(request):
             # messages.success(request, 'wrong password or username please check')        
     else:
         # Return an 'invalid login' error message.
-         return render(request, 'user/login.html' )
+       
+            return render(request, 'user/login.html' )
 
 def logout_view(request):
     logout(request)
